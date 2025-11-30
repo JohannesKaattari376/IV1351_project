@@ -85,7 +85,7 @@ FROM
          ON tat.activity_type_id = ta.activity_type_id
 WHERE
     ci.year = 2025
-    AND ci.course_instance_id = '2025-50273'   -- change if needed
+    AND ci.course_instance_id = '2025-50273'  
 GROUP BY
     c.course_code,
     ci.course_instance_id,
@@ -128,7 +128,7 @@ FROM
          ON tat.activity_type_id = ta.activity_type_id
 WHERE
     ci.year = 2025
-    AND e.employment_id = 'E101'    -- change to the teacher you want
+    AND e.employment_id = 'E101'    
 GROUP BY
     c.course_code,
     ci.course_instance_id,
@@ -154,13 +154,13 @@ FROM
     JOIN course_instance ci ON ci.course_instance_id = ta.course_instance_id
 WHERE
     ci.year = 2025
-    AND ci.period_code = 'P1'     -- current period
+    AND ci.period_code = 'P1'     
 GROUP BY
     e.employment_id,
     teacher_name,
     ci.period_code
 HAVING
-    COUNT(DISTINCT ci.course_instance_id) > 1    -- threshold
+    COUNT(DISTINCT ci.course_instance_id) > 1    
 ORDER BY
     num_courses DESC,
     teacher_name;
